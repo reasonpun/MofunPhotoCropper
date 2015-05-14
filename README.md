@@ -5,6 +5,8 @@ forked from [https://github.com/ryanhoo/PhotoCropper](https://github.com/ryanhoo
 and modify by [针对Android5.0做了修改](http://ryanhoo.github
 .io/blog/2014/06/03/the-ultimate-approach-to-crop-photos-on-android-3/)
 
+
+
 # PhotoCropper
 
 PhotoCropper is a light-weight but sharp and smart tool to help you crop photos on android devices. By providing a simple callback interface for developers and encapsulating the tricky things of cropping photos into a library. It makes the logic much more easier and simpler. 
