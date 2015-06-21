@@ -84,8 +84,7 @@ startActivityForResult(intent, CropHelper.REQUEST_CAMERA);
 #### Crop from gallery
 
 ```java
-Intent intent = CropHelper.buildCropFromGalleryIntent(mCropParams);
-startActivityForResult(intent, CropHelper.REQUEST_CROP);
+startActivityForResult(CropHelper.buildCropFromGalleryIntent(mCropParams),CropHelper.getGalleryCode());
 ```
 ### Step 4
 
