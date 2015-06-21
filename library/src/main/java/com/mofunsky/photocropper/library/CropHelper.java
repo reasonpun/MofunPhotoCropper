@@ -1,4 +1,4 @@
-package com.mofunsky.library;
+package com.mofunsky.photocropper.library;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

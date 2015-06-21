@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.mofunsky.library.BasePhotoCropActivity;
-import com.mofunsky.library.CropHelper;
-import com.mofunsky.library.CropParams;
+import com.mofunsky.photocropper.library.BasePhotoCropActivity;
+import com.mofunsky.photocropper.library.CropHelper;
+import com.mofunsky.photocropper.library.CropParams;
 
 /**
  * Created with Android Studio.

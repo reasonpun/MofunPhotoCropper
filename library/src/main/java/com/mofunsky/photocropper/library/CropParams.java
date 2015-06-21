@@ -1,4 +1,4 @@
-package com.mofunsky.library;
+package com.mofunsky.photocropper.library;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
