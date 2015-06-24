@@ -34,6 +34,7 @@ public class CropParams {
     public boolean returnData;
     public boolean noFaceDetection;
     public boolean scaleUpIfNeeded;
+    public boolean isCrop;
 
     public int aspectX;
     public int aspectY;
@@ -41,7 +42,7 @@ public class CropParams {
     public int outputX;
     public int outputY;
 
-    public CropParams(String path) {
+    public CropParams(String path, boolean isCrop) {
         uri = CropHelper.buildUri(path);
         type = CROP_TYPE;
         outputFormat = OUTPUT_FORMAT;
@@ -54,5 +55,7 @@ public class CropParams {
         aspectY = DEFAULT_ASPECT;
         outputX = DEFAULT_OUTPUT;
         outputY = DEFAULT_OUTPUT;
+
+        this.isCrop = isCrop;
     }
 }

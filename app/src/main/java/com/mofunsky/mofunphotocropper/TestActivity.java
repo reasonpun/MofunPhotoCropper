@@ -25,7 +25,7 @@ public class TestActivity extends BasePhotoCropActivity implements View.OnClickL
 
     ImageView mImageView;
 
-    CropParams mCropParams = new CropParams("1234567890.jpg");
+    CropParams mCropParams = new CropParams("1234567890.jpg", true);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class TestActivity extends BasePhotoCropActivity implements View.OnClickL
     public void onPhotoCropped(Uri uri) {
         Log.d(TAG, "Crop Uri in path: " + uri.getPath());
         Toast.makeText(this, "Photo cropped!", Toast.LENGTH_LONG).show();
-        mImageView.setImageBitmap(CropHelper.decodeUriAsBitmap(this, mCropParams.uri));
+        mImageView.setImageBitmap(CropHelper.decodeUriAsBitmap(this, uri));
     }
 
     @Override

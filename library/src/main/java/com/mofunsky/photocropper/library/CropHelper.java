@@ -60,24 +60,34 @@ public class CropHelper {
                     handler.onPhotoCropped(cropParams.uri);
                     break;
                 case REQUEST_CAMERA:
-                    Intent intent = buildCropFromUriIntent(cropParams);
-                    if (context != null) {
-                        context.startActivityForResult(intent, REQUEST_CROP);
+                    if (cropParams.isCrop) {
+                        Intent intent = buildCropFromUriIntent(cropParams);
+                        if (context != null) {
+                            context.startActivityForResult(intent, REQUEST_CROP);
+                        } else {
+                            handler.onCropFailed("CropHandler's context MUST NOT be null!");
+                        }
                     } else {
-                        handler.onCropFailed("CropHandler's context MUST NOT be null!");
+                        handler.onPhotoCropped(cropParams.uri);
                     }
+
                     break;
 
                 case REQUEST_PIC_KITKAT:
-                    Uri selectedImageUri = data.getData();
-                    if (selectedImageUri != null && context != null) {
-                        String imagePath = getPath(context, selectedImageUri);
-                        Uri uri = Uri.parse("file:///" + imagePath);
-                        context.startActivityForResult(buildCropIntent("com.android.camera.action" +
-                                ".CROP", cropParams, uri), REQUEST_CROP);
+                    if (cropParams.isCrop) {
+                        Uri selectedImageUri = data.getData();
+                        if (selectedImageUri != null && context != null) {
+                            String imagePath = getPath(context, selectedImageUri);
+                            Uri uri = Uri.parse("file:///" + imagePath);
+                            context.startActivityForResult(buildCropIntent("com.android.camera.action" +
+                                    ".CROP", cropParams, uri), REQUEST_CROP);
+                        } else {
+                            handler.onCropFailed("CropHandler's context MUST NOT be null!");
+                        }
                     } else {
-                        handler.onCropFailed("CropHandler's context MUST NOT be null!");
+                        handler.onPhotoCropped(data.getData());
                     }
+
                     break;
             }
         }
@@ -129,7 +139,8 @@ public class CropHelper {
         } else {
             intent.setDataAndType(params.uri, params.type);
         }
-        intent.putExtra("crop", params.crop).putExtra("scale", params.scale)
+        intent.putExtra("crop", params.crop)
+                .putExtra("scale", params.scale)
                 .putExtra("aspectX", params.aspectX)
                 .putExtra("aspectY", params.aspectY)
                 .putExtra("outputX", params.outputX)

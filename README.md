@@ -34,6 +34,16 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
+and need a param named CropParams
+
+```java
+    /**
+    * param 1 : file name, where to save
+    * param 2 : boolean, if croped
+    */
+    CropParams mCropParams = new CropParams("1234567890.jpg", true);
+```
+
 ### Step 2
 
 Make sure you implemented these methods:
