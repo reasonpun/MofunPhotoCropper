@@ -21,7 +21,7 @@ public class CropParams {
     public static final String CROP_TYPE = "image/*";
     public static final String OUTPUT_FORMAT = Bitmap.CompressFormat.JPEG.toString();
 
-    public static final int DEFAULT_ASPECT = 1;
+    public static final int DEFAULT_ASPECT = 0;
     public static final int DEFAULT_OUTPUT = 800;
 
     public Uri uri;
@@ -34,7 +34,7 @@ public class CropParams {
     public boolean returnData;
     public boolean noFaceDetection;
     public boolean scaleUpIfNeeded;
-    public boolean isCrop;
+    public boolean isCrop = false;
 
     public int aspectX;
     public int aspectY;
@@ -55,6 +55,54 @@ public class CropParams {
         aspectY = DEFAULT_ASPECT;
         outputX = DEFAULT_OUTPUT;
         outputY = DEFAULT_OUTPUT;
+
+        this.isCrop = isCrop;
+    }
+
+    /**
+     * 支持自定义输出尺寸
+     *
+     * @param path
+     * @param isCrop
+     * @param outputX
+     * @param outputY
+     */
+    public CropParams(String path, boolean isCrop, int outputX, int outputY) {
+        uri = CropHelper.buildUri(path);
+        type = CROP_TYPE;
+        outputFormat = OUTPUT_FORMAT;
+        crop = "true";
+        scale = true;
+        returnData = false;
+        noFaceDetection = true;
+        scaleUpIfNeeded = true;
+
+        aspectX = DEFAULT_ASPECT;
+        aspectY = DEFAULT_ASPECT;
+
+        this.outputX = outputX;
+        this.outputY = outputY;
+
+        this.isCrop = isCrop;
+    }
+
+    public CropParams(String path, boolean isCrop,
+                      int aspectX, int aspectY,
+                      int outputX, int outputY) {
+        uri = CropHelper.buildUri(path);
+        type = CROP_TYPE;
+        outputFormat = OUTPUT_FORMAT;
+        crop = "true";
+        scale = true;
+        returnData = false;
+        noFaceDetection = true;
+        scaleUpIfNeeded = true;
+
+        this.aspectX = aspectX;
+        this.aspectY = aspectY;
+
+        this.outputX = outputX;
+        this.outputY = outputY;
 
         this.isCrop = isCrop;
     }

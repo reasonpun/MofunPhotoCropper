@@ -25,7 +25,7 @@ public class TestActivity extends BasePhotoCropActivity implements View.OnClickL
 
     ImageView mImageView;
 
-    CropParams mCropParams = new CropParams("1234567890.jpg", true);
+    CropParams mCropParams = new CropParams("1234567890.jpg", true, 2, 1, 750, 380);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
